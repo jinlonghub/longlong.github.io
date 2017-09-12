@@ -150,9 +150,9 @@ public:
 
 ---
 
-###总结：   
--这是一个hash 和 链表结合的题目，考查的非常高频。重点练习。     
--Java中有专门的函数库： LinkedHashMap = DoublyLinkedList + HashMap     
+### 总结：   
+- 这是一个hash 和 链表结合的题目，考查的非常高频。重点练习。     
+- Java中有专门的函数库： LinkedHashMap = DoublyLinkedList + HashMap     
 
 ---
 
