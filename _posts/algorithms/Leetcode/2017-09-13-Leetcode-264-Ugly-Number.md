@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Leetcode-146 LRU Cache"
+title: "Leetcode-264 Ugly Number ii"
 date: 2017-09-13 21:00:00 +0800 
 categories: Algorithms
 tag: Heap
