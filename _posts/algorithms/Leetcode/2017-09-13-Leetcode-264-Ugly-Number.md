@@ -5,6 +5,8 @@ date: 2017-09-13 21:00:00 +0800
 categories: Algorithms
 tag: Heap
 ---
+* content
+{:toc}
 
 <!-- more -->
 
@@ -12,21 +14,25 @@ tag: Heap
 
 ---
 
-### Description:    
+<!-- TOC -->
+
+## Description:    
 Write a program to find the n-th ugly number.     
 **Ugly numbers** are positive numbers whose prime factors only include 2, 3, 5. 
 For example, 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 is the sequence of the first 10 ugly numbers..    
 Note that **1** is typically treated as an ugly number, and n does not exceed 1690. 
 
-### Follow up:    
+## Follow up:    
 Could you do both operations in O(nlog n) or O(n) time. time complexity?    
 
-### Example:     
+## Example:     
 If n=9, return 10.
 
 ---
     
-### Solution:    
+<!-- TOC -->
+
+## Solution:    
 - 丑数(Ugly Number)：从1开始，以2,3,5为因数的正数。    
 - 丑数的生成：`{1}`是定义的丑数；用`{1}`分别`*`2/ 3/ 5 可得`{2，3，5}`放回原集合；从`{2，3，5}`中取最小数，再分别`*`2/ 3/ 5 可得`{4，6，10}` 以此循环。       
   即，从生成的集合中依次取最小值分别`*`2/ 3/ 5，然后再把结果放回原集合。
@@ -34,9 +40,11 @@ If n=9, return 10.
 - 提到求最小值，就想到**MinHeap**即**priority_queue**
 - 因为考虑到`2 * 5` 和 `5 * 2`重复，为了去重，再搭配一个Hash_set 来判断当前的数据是否已经放到了集合中。 
 
----     
+---  
+
+<!-- TOC -->   
        
-### C++ Code:     
+## C++ Code:     
 
 ```cpp
 class Solution {
@@ -67,7 +75,9 @@ public:
 
 ```
 
-### Java Code:  
+<!-- TOC -->
+
+## Java Code:  
 
 ```java
 //O(nlogn) HashMap + Heap
@@ -106,7 +116,9 @@ class Solution {
 
 ---
 
-### 总结：   
+<!-- TOC -->
+
+## 总结：   
 1. int、long、long long 的取值范围：     
 >unsigned int   0～4294967295      
 >         int   -2147483648～2147483647   

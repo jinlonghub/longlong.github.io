@@ -5,14 +5,18 @@ date: 2017-09-12 21:00:00 +0800
 categories: Algorithms
 tag: Hash
 ---
+* content
+{:toc}
+
+---
+
+## [LRU Cache](https://leetcode.com/problems/lru-cache/description/)
+
+---
 
 <!-- more -->
 
----
-## [LRU Cache](https://leetcode.com/problems/lru-cache/description/)
----
-
-### Description:    
+## Description:    
 >Design and implement a data structure for Least Recently Used (LRU) cache.     
 >It should support the following operations: **get** and **put**.    
 >**get(key)** - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.    
@@ -37,7 +41,7 @@ tag: Hash
 
 ---
     
-### Solution:    
+## Solution:    
 - 首先明确LRU是如何工作的：    
 1. LRU的容量是3，先将|1|2|3|放进去1是队尾 3是队首，现在4出现，则需要把队尾的1删掉，把4加到队首。--> 对应操作：**从尾部删除，从头部加入**    
 2. LRU现在为|2|3|4|，现在3出现，需要把3删掉，再把3加到队首，即|2|4|3|。-->对应操作:**从中间删除，从头部加入**     
@@ -52,7 +56,7 @@ tag: Hash
 
 ---     
        
-### C++ Code:     
+## C++ Code:     
 
 ```cpp
 class ListNodes {
@@ -151,7 +155,7 @@ public:
 
 ---
 
-### 总结：   
+## 总结：   
 - 这是一个hash 和 链表结合的题目，考查的非常高频。重点练习。     
 - Java中有专门的函数库： LinkedHashMap = DoublyLinkedList + HashMap     
 
