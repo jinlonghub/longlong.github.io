@@ -54,7 +54,7 @@ tag: Hash
        
 ### C++ Code:     
 
-```
+```cpp
 class ListNodes {
 public:
     int val;
@@ -65,7 +65,6 @@ public:
         next = n;
     }
 };
-
 
 class LRUCache{
 public:
