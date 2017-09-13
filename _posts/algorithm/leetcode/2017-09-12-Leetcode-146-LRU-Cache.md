@@ -39,16 +39,16 @@ tag: Hash
     
 ### Solution:    
 - 首先明确LRU是如何工作的：    
--- LRU的容量是3，先将|1|2|3|放进去，现在4出现，则需要把1删掉，把5加到尾部。--> 对应操作：**从头部删除，从尾部加入**    
--- LRU现在为|2|3|4|，现在3出现，需要把3删掉，再把3加到尾部，即|2|4|3|。-->对应操作:**从中间删除，从尾部加入**     
+-- LRU的容量是3，先将|1|2|3|放进去1是队尾 3是队首，现在4出现，则需要把队尾的1删掉，把4加到队首。--> 对应操作：**从尾部删除，从头部加入**    
+-- LRU现在为|2|3|4|，现在3出现，需要把3删掉，再把3加到队首，即|2|4|3|。-->对应操作:**从中间删除，从头部加入**     
        
 - 选择数据结构：    
 -- 满足上面操作的，可以有queue、heap、LinkedList，基于O(1) 的时间复杂度，所以先去LinkedList，因为queue和heap无法在O(1)时间内删除中间元素。        
--- 但是LinkedList不支持从中间删除元素的操作，我们再搭配一个Hash map，map的_key_记录_在List中的位置，_value_记录ListNode。    
+-- 但是LinkedList不支持从中间删除元素的操作，我们再搭配一个Hash map，map的_key_记录在List中的位置，_value_记录ListNode。    
 >Java函数库中自带LinkedHashMap。    
--- LinkedList 需要区分single(_单向链表_) 和 double(_双向链表_)：（_这两个的区别主要是在对delete的处理上）    
->single list：因为ListNode中只能存放next的节点，所以，使用single list的时候，HashMap中_value_就不要存放当前的_node_，而是存_node->pre_ 。这样在delete操作时就不用再去寻找_node->pre_。         
->double list：相比single list，双向链表要方便一些，所以这里采用双向链表。      
+>- LinkedList 需要区分single(_单向链表_) 和 double(_双向链表_)：（_这两个的区别主要是在对delete的处理上_）    
+>- single list：因为ListNode中只能存放next的节点，所以，使用single list的时候，HashMap中_value_就不要存放当前的_node_，而是存_node->pre_ 。这样在delete操作时就不用再去寻找_node->pre_。         
+>- double list：相比single list，双向链表要方便一些，所以这里采用双向链表。      
 
 ---     
        
