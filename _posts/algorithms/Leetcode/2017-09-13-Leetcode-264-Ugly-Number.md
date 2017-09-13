@@ -23,6 +23,7 @@ Could you do both operations in O(nlog n) or O(n) time. time complexity?
 
 ### Example:     
 If n=9, return 10.
+
 ---
     
 ### Solution:    
@@ -32,6 +33,7 @@ If n=9, return 10.
 - 根据分析，我们需要一个集合，它能很快的插入数据，和求最小值。
 - 提到求最小值，就想到**MinHeap**即**priority_queue**
 - 因为考虑到`2 * 5` 和 `5 * 2`重复，为了去重，再搭配一个Hash_set 来判断当前的数据是否已经放到了集合中。 
+
 ---     
        
 ### C++ Code:     
@@ -112,9 +114,10 @@ class Solution {
 >unsigned long  0～4294967295   
 >         long  -2147483648～2147483647 
 >
->long long的最大值：9223372036854775807  (long long 是**64bit存储**, int和long都是**32bit存储**)
+>long long的最大值：9223372036854775807        
 >long long的最小值：-9223372036854775808    
 >unsigned long long的最大值：1844674407370955161    
+> `(long long 是**64bit存储**, int和long都是**32bit存储**)`
 >
 >__int64的最大值：9223372036854775807   
 >__int64的最小值：-9223372036854775808   
@@ -122,17 +125,18 @@ class Solution {
 
 2. `Heap`
   +  `Heap` 是Tree结构，是“从上到下，从左到右” 尽量填充满的`二叉树`，分为：     
-     `Max heap` ：root为最大值，左右节点的值，均小于父节点，左右节点的大小无法确定。
+     `Max heap` ：root为最大值，左右节点的值，均小于父节点，左右节点的大小无法确定。     
      `Min heap` ：root为最小值，左右节点的值，均大于父节点，左右节点的大小无法确定。
 
 3. 二叉树，二叉查找树，平衡二叉查找树的区别     
-  + `Binary Tree` ：每个节点都**最多**有两个叉的树    
+  + `Binary Tree` ：           每个节点都**最多**有两个叉的树    
   + BST `Binary Search Tree` ：左节点<中间节点<右节点 的二叉树    
-  + B-BST `Balance-BST` ：任意节点的左右子树深度差值<=1 的BST    
+  + B-BST `Balance-BST` ：     任意节点的左右子树深度差值<=1 的BST    
 
-| `Binary Tree` | BST`Binary Search Tree` | B-BST`Balance-BST` |
-| ------------- | ----------------------- | ------------------ |
-| 每个节点都**最多**有两个叉的树 | 左节点<中间节点<右节点 的二叉树| 任意节点的左右子树深度差值<=1 的BST |
+    | `Binary Tree` | BST`Binary Search Tree` | B-BST`Balance-BST` |
+    | ------------- | ----------------------- | ------------------ |
+    | 每个节点都**最多**有两个叉的树 | 左节点<中间节点<右节点 的二叉树| 任意节点的左右子树深度差值<=1 的BST |
+
 
 4. `priority_queue`专题     
   1. `priority_queue` 本质上就是 `Heap`
@@ -148,6 +152,7 @@ class Solution {
     + 如果想使用`MinHeap`的`priority_queue` 需要重载 `<`:
       + 对于 _基本数据类型_ ： 可以使用 _仿函数_ `greater<>`来完成重载：`priority_queue<int, vector<int>, greater<int> >`    
       + 对于 _自定义类型_ ：需要建立一个`struct` 去重载 `运算符<` :
+
       ```cpp
       struct cmp {
         bool operator () (int &a, int &b) {
@@ -161,6 +166,8 @@ class Solution {
         ……
         ……
       };
+      
+      ```
 
 ---
 
