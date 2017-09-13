@@ -6,11 +6,11 @@ categories: Algorithms
 tag: Heap
 ---
 
+<!-- more -->
+
 ## [Ugly Number ii](https://leetcode.com/problems/ugly-number-ii/description/)
 
 ---
-
-<!-- more -->
 
 ### Description:    
 Write a program to find the n-th ugly number.     
