@@ -7,7 +7,7 @@ tag: Hash
 
 ---
 
-'<!-- more -->' 
+<!-- more -->
 
 
 ## [LRU Cache](https://leetcode.com/problems/lru-cache/description/)
