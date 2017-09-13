@@ -4,12 +4,11 @@ title: "Leetcode-146 LRU Cache"
 date: 2017-09-12 21:00:00 +0800 
 categories: Algorithms
 tag: Hash
-
 ---
 
 <!-- more -->
 
-
+---
 ## [LRU Cache](https://leetcode.com/problems/lru-cache/description/)
 ---
 
@@ -35,6 +34,7 @@ tag: Hash
 >cache.get(1);       // returns -1 (not found)    
 >cache.get(3);       // returns 3    
 >cache.get(4);       // returns 4    
+
 ---
     
 ### Solution:    
