@@ -150,7 +150,7 @@ class Solution {
        `Compare`：元素的比较方式，STL默认用`operator < `，即STL默认`priority_queue`为`MaxHeap` **堆顶是最大值**。
     + 如果使用STL默认的PQ形式(即`MaxHeap`形式)，则可以直接写成：`priority_queue<int> q;`
     + 如果想使用`MinHeap`的`priority_queue` 需要重载 `<`:
-      + 对于 _基本数据类型_ ： 可以使用 _仿函数_ `greater<>`来完成重载：`priority_queue<int, vector<int>, greater<int> >`    
+      + 对于 _基本数据类型_ ： 可用 _仿函数_ `greater<>`来完成重载：`priority_queue<int, vector<int>, greater<int> >`    
       + 对于 _自定义类型_ ：需要建立一个`struct` 去重载 `运算符<` :
 
       ```cpp
