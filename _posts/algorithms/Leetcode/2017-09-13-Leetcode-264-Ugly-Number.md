@@ -139,12 +139,12 @@ class Solution {
 
 
 4. `priority_queue`专题     
-  1. `priority_queue` 本质上就是 `Heap`
-  2. 但是`priority_queue`实例化时，需要写成`queue`的形式，可以理解为`priority_queue`是`queue`的一种，因为`priority_queue`和`queue`有着相同的接口，    
+  + `priority_queue` 本质上就是 `Heap`
+  + 但是`priority_queue`实例化时，需要写成`queue`的形式，可以理解为`priority_queue`是`queue`的一种，因为`priority_queue`和`queue`有着相同的接口，    
      都支持q.push(); q.size();等…… 
      + **注意：**`q.top()` 是`priority_queue`独有的，`queue`没有；      
                      `q.front() 和 q.back()`是`queue`独有的，`priority_queue`没有。      
-  3. `C++ STL`中的`priority_queue`    
+  + `C++ STL`中的`priority_queue`    
     + `priority_queue`在`C++`中的形式：`priority_queue<Type, Container, Compare>`     
        `Container`：保存数据的容器，且必须是数组实现的容器，STL默认为vector；    
        `Compare`：元素的比较方式，STL默认用`operator < `，即STL默认`priority_queue`为`MaxHeap` **堆顶是最大值**。
