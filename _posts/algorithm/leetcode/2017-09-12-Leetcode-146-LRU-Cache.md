@@ -5,9 +5,11 @@ date: 2017-09-12 21:00:00 +0800
 categories: Algorithms
 tag: Hash
 
+---
+
 '<!-- more -->' 
 
----
+
 ## [LRU Cache](https://leetcode.com/problems/lru-cache/description/)
 ---
 
