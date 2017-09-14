@@ -1,6 +1,6 @@
 ---
 layout: original
-title: "Hello Word"
+title: "Hello World"
 date: 2017-09-11 23:30:00 +0800 
 categories: 我的札记
 tag: Novel
