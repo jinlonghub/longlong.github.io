@@ -8,13 +8,12 @@ tag: Heap
 * content
 {:toc}
 
-<!-- more -->
 
-## [Ugly Number ii](https://leetcode.com/problems/ugly-number-ii/description/)
+### [Leetcode Link：Ugly Number ii](https://leetcode.com/problems/ugly-number-ii/description/)
 
 ---
 
-<!-- TOC -->
+<!-- more -->
 
 ## Description:    
 Write a program to find the n-th ugly number.     
