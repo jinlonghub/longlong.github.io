@@ -10,7 +10,7 @@ tag: Hash
 
 ---
 
-### [Lettcode Link: LRU Cache](https://leetcode.com/problems/lru-cache/description/)
+[Lettcode Link: LRU Cache](https://leetcode.com/problems/lru-cache/description/)
 
 ---
 

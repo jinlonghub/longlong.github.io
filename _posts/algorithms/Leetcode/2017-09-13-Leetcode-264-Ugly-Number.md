@@ -9,7 +9,7 @@ tag: Heap
 {:toc}
 
 
-### [Leetcode Link：Ugly Number ii](https://leetcode.com/problems/ugly-number-ii/description/)
+[Leetcode Link：Ugly Number ii](https://leetcode.com/problems/ugly-number-ii/description/)
 
 ---
 
