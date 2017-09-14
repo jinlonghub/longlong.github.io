@@ -10,7 +10,7 @@ tag: Hash
 
 ---
 
-[Lettcode Link: LRU Cache](https://leetcode.com/problems/lru-cache/description/)
+>[Lettcode Link: LRU Cache](https://leetcode.com/problems/lru-cache/description/)
 
 ---
 
@@ -23,10 +23,10 @@ tag: Hash
 >**put(key, value)** - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.     
 
 
-### Follow up:    
+ ### Follow up:    
 >Could you do both operations in O(1) time complexity?    
 
-### Example:     
+ ### Example:     
 >LRUCache cache = new LRUCache( 2 /* capacity */ );    
 >    
 >cache.put(1, 1);    

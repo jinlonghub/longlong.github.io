@@ -9,7 +9,7 @@ tag: Heap
 {:toc}
 
 
-[Leetcode Link：Ugly Number ii](https://leetcode.com/problems/ugly-number-ii/description/)
+>[Leetcode Link：Ugly Number ii](https://leetcode.com/problems/ugly-number-ii/description/)
 
 ---
 
@@ -21,10 +21,10 @@ Write a program to find the n-th ugly number.
 For example, 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 is the sequence of the first 10 ugly numbers..    
 Note that **1** is typically treated as an ugly number, and n does not exceed 1690. 
 
-## Follow up:    
+ ### Follow up:    
 Could you do both operations in O(nlog n) or O(n) time. time complexity?    
 
-## Example:     
+ ### Example:     
 If n=9, return 10.
 
 ---
