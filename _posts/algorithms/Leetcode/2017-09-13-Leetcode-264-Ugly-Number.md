@@ -182,4 +182,4 @@ class Solution {
 
 ---
 
-`2017.09.13` in SHANGHAI     
+`2017.09.13`       
