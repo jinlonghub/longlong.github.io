@@ -65,7 +65,7 @@ tag: Jekyll
 
 >[MarkDown输入数学公式具体语法](http://oiltang.com/2014/05/04/markdown-and-mathjax/)
 
-```java
+```cpp
 1．如何插入公式
 
 LaTeX的数学公式有两种：行中公式和独立公式。行中公式放在文中与其它文字混编，独立公式单独成行。
