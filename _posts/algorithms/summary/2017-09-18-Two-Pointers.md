@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Array专题--Subarray"
-date: 2017-09-14 23:00:00 +0800 
+title: "Array专题--Two Pointers"
+date: 2017-09-18 17:00:00 +0800 
 categories: Algorithms
 tag: Array
 ---
@@ -12,33 +12,26 @@ tag: Array
 
 <!-- more -->
 
-## Array专题--Subarray
+## Array专题--Two Pointers    
 
 ---
 
-## Subarray相关问题 解题思路          
-  - Subarray解题思路：遇到Subarray相关的问题，一定要想到`prefix sum`（前缀和数组）。    
-  - 什么是`prefix sum`：   
-    - 一维数组`prefix sum`：`prefix_sum[i] = \\(sum\\){nums[0 ~ i]}`     
-                           可以在O(1)时间内，求出`sum[i ~j] = sum[j] - sum[i - 1]`。        
-    ![liner_prefix_sum]({{ '/styles/images/algorithms/2017-09-14-Subarray/liner_prefix_sum.png' | prepend: site.baseurl }})    
-    - 二维数组`prefix sum`： 
+## Two Pointers解题思路              
+  - 比如遇到Two sum这类问题，有两种解题思路：  
+    - HashMap方法：(题意：给定一个数组，从中找到两个元素的**位置**，其相加和target相等)    
+      - 建立hashmap，存储当前元素的`值`和`位置`；        
+      - 用target减去每一个当前元素，得到的值 在hashmap中查找，如果有这个`值`则返回其`位置`，也返回当前的`位置`。    
 
-    ```cpp     
-    sum[x - i][y - j] = prefix_sum[x][y] - 
-    		prefix_sum[x][j - 1] - 
-    		prefix_sum[i - 1][y] + 
-    		prefix_sum[i][j]
-    ```    
-    如下图所示：
-    ![two-dimensional_prefix_sum]({{ '/styles/images/algorithms/2017-09-14-Subarray/two-dimensional_prefix_sum.png' | prepend: site.baseurl }})     
-    - 有了`prefix sum`可以在O(1)时间，求出任意一段的sum。但前提是需要用O(n)的预处理时间来构建`prefix sum`。这个O(n)的时间开销很有价值，因为如果没有这个预处理时间，每求一次sum都需要有O(n)的时间。（对应n*n的二维矩阵就是O(n^2)时间复杂度）。      
+    - Sort + Two Pointers方法：  (题意：给定一个数组，从中找到两个**元素**(注意这时是**元素**不是**位置**了)，其相加和target相等)    
+      - 首先，把数组排序`sort()`，时间复杂度为`O(n logn)`       
+      - 然后，生成两个指针`left`和`right`指向首元素和尾元素，移动两个指针去和target做比较。这个pair的过程 时间复杂度`O(n)`  
+      - 整体时间复杂度：`O(n logn) + O(n)`     
 
----  
+      
 
 ---
 
-## Subarray相关题目      
+## Two Pointers相关题目      
 
 ### 1. [Leetcode Link：Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/)      
 
