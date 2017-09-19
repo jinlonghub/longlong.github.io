@@ -18,35 +18,31 @@ tag: Array
 
 ## Two Pointers解题思路              
   - 比如遇到Two sum这类问题，有两种解题思路：  
-    - HashMap方法：(题意：给定一个数组，从中找到两个元素的**位置**，其相加和target相等)    
-      - 建立hashmap，存储当前元素的`值`和`位置`；        
-      - 用target减去每一个当前元素，得到的值 在hashmap中查找，如果有这个`值`则返回其`位置`，也返回当前的`位置`。    
+    - HashMap方法：(题意：给定一个数组，从中找到两个元素的**下标**，其相加和target相等)    
+      - 建立hashmap，存储当前元素的`值`和`下标`；        
+      - 用target减去每一个当前元素，得到的值 在hashmap中查找，如果有这个`值`则返回其`下标`，也返回当前的`下标`。    
 
-    - Sort + Two Pointers方法：  (题意：给定一个数组，从中找到两个**元素**(注意这时是**元素**不是**位置**了)，其相加和target相等)    
+    - Sort + Two Pointers方法：  (题意：给定一个数组，从中找到两个**元素**(注意这时是**元素**不是**下标**了)，其相加和target相等)    
       - 首先，把数组排序`sort()`，时间复杂度为`O(n logn)`       
       - 然后，生成两个指针`left`和`right`指向首元素和尾元素，移动两个指针去和target做比较。这个pair的过程 时间复杂度`O(n)`  
       - 整体时间复杂度：`O(n logn) + O(n)`     
-
-      
 
 ---
 
 ## Two Pointers相关题目      
 
-### 1. [Leetcode Link：Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/)      
+### 1. [Leetcode Link：Two Sum](https://leetcode.com/problems/two-sum/description/)      
 
   + **Description**          
-    Given an array of integers, find a contiguous subarray which has the largest sum.         
-    The subarray should contain at least one number.     
+    Given an array of integers, return indices of the two numbers such that they add up to a specific target.    
+    You may assume that each input would have exactly one solution, and you may not use the same element twice.      
 
   + **Example**           
-    Given the array `[−2,2,−3,4,−1,2,1,−5,3]`, the contiguous subarray `[4,−1,2,1]` has the largest `sum = 6`.    
+    Given nums = [2, 7, 11, 15], target = 9, Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].    
 
   + **Solution**      
-    - 求最大子数组，可以for一遍整体数组，把每个点的前缀和求出来；       
-    - 
-    - 用minSum记录之前最小的前缀和，用当前的前缀和sum `-` 之前最小前缀和，得到的就是maxSum的备选结果，在备选结果里找出最大即可。      
-    - 注意minSum，在所有元素都是正数时，minSum是0(这样确保了maxSum中有第一个元素的值)；只有在有负数出现时，minSum才会取最小的元素值。**也就是说minSum的初始值为0**。     
+    - 使用Hashmap的方法：建立hashmap，存储当前元素的`值`和`index`；        
+    - 用target减去每一个当前元素，得到的值 在hashmap中查找，如果有这个`值`则返回其`index`，也返回当前的`index`。   
 
   + **C++** **Code**              
 
@@ -54,317 +50,109 @@ tag: Array
 
 class Solution {
 public:
-    /*
-     * @param nums: A list of integers
-     * @return: A integer indicate the sum of max subarray
-     */
-    int maxSubArray(vector<int> nums) {
-        // write your code here
-        if (nums.empty()) return 0;
-        int maxSum = INT_MIN, minSum = 0;  
-        //minSum的初始值为0，这样确保了在元素都为正数时，sum - minSum = sum。
-        int sum = 0;    
-        //sum就是prefix sum，它的初始值是0，就是前缀和数组的第一个元素是0。
+    vector<int> twoSum(vector<int>& nums, int target) {
+        map<int, int> hashmap;
+        vector<int> result;
+        if (nums.size() == 0) return result;
+        
         for (int i = 0; i < nums.size(); i++) {
-            sum += nums[i];  //sum即每个点的前缀和
-            maxSum = max(maxSum, sum - minSum);  
-            //用当前点的前缀和 减去 之前最小的前缀和，再和全局的maxSum作比较。
-            minSum = min(minSum, sum);
+            
+            if (hashmap.find(target - nums[i]) != hashmap.end()) {
+                result.push_back(hashmap[target - nums[i]]);
+                result.push_back(i);
+            }
+            hashmap.insert(make_pair(nums[i], i));
         }
-        return maxSum;
+        return result; 
     }
 };
+
 
 ```
 
 ---
 
-### 2. [Leetcode Link：Best time to buy and sell stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)     
+### 2. Two Sum Closest （无连接）   
 
-  + **Description**    
-    Say you have an array for which the ith element is the price of a given stock on day i.      
-    If you were only permitted to complete at most one transaction(ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.             
+  + **Description**  
+    Given an array of integers, return the difference of the sum of two numbers such that it is the closest to a specific target.      
+    You may assume that each input would have exactly one solution, and you may not use the same element twice.   
 
-  + **Example**    
-    Input: `[7, 1, 5, 3, 6, 4]`         
-    Output: 5      
-    max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)     
-
-    Input: `[7, 6, 4, 3, 1]`       
-    Output: 0    
-    In this case, no transaction is done, i.e. max profit = 0.      
-
-  + **Solution**     
-    - (和Maximum Subarray 是同一个思路) 求股票的最佳买入卖出时间，for一遍所有可以卖出的时间，   
-    - 看一下`i - 1`天里最低点min是什么，用当前时间的price 减去 min，得到的今天最大的收益，      
-    - 当天的最大收益，和全局里的max最大收益去比较一下，保留最大值。    
-
-  + **C++** **code**     
-
-```cpp    
-class Solution {
-public:
-    /*
-     * @param prices: Given an integer array
-     * @return: Maximum profit
-     */
-    int maxProfit(vector<int> &prices) {
-        // write your code here
-        if (prices.empty()) return 0;
-        int max_profit = INT_MIN, min_price = INT_MAX;
-        for (int i = 0; i < prices.size(); i++) {
-            min_price = min(min_price, prices[i]); 	
-            //找到截止到当前的最低的价格点。这样就能保证最初的第一个值就是最初的低点。
-            max_profit = max(max_profit, prices[i] - min_price);  
-            //用今天的price减去以前的min_price, 在和全局的max_profit作比较。
-        }
-        return maxSum;
-    }
-};
-
-```
-
----
-
-### 3. [Lintcode Link：Minimum Subarray](http://www.lintcode.com/en/problem/minimum-subarray/)  
-
-  + **Description**    
-    Given an array of integers, find the subarray with smallest sum.      
-	Return the sum of the subarray.      
- 
-  + **Example**    
-    For [1, -1, -2, 1], return -3.
-
-  + **Solution**     
-	同Maximum subarray 思路一样，只是把求max转化为求min。      
-
-  + **C++** **code**    
-
-```cpp
-
-class Solution {
-public:
-    /*
-     * @param nums: a list of integers
-     * @return: A integer indicate the sum of minimum subarray
-     */
-    int minSubArray(vector<int> &nums) {
-        // write your code here
-        if (nums.empty()) return 0;
-        int minSum = INT_MAX, maxSum = 0;
-        int curSum = 0;
-        for (int i = 0; i < nums.size(); i++) {
-            curSum += nums[i];
-            minSum = min(minSum, curSum - maxSum); 
-            maxSum = max(maxSum, curSum);  
-        }
-        return minSum;
-    }
-};
-
-```
-
----
-
-### 4. [Lintcode Link：Maximum subarray ii](http://www.lintcode.com/en/problem/maximum-subarray-ii/)  
-
-  + **Description**      
-	Given an array of integers, find two non-overlapping subarrays which have the largest sum.   
-	The number in each subarray should be contiguous. The subarray should contain at least one number.      
-	Return the largest sum.    
-
-  + **Example**    
-    For given `[1, 3, -1, 2, -1, 2]`, the two subarrays are `[1, 3]` and `[2, -1, 2]` or `[1, 3, -1, 2]` and `[2]`, they both have the largest sum `7`.
+  + **Example**  
+    Given nums = [-1, 2, 1, -4], target = 4, the closest difference is 1.   
 
   + **Solution**   
-    - 因为两个subarray一定不重叠，所以必定存在一条分割线，分开这两个subarrays，我们可以分别求出left 和 right的maxSum，然后再加起来。
-    - 具体来说就是，先做两个for循环，一个从左->右 求maxSum；一个从右->左 求maxSum。然后将两个maxSum加起来，和一个全局的max作比较找出最大的sum。
+    - Sort + Two Pointers方法，根据题意有一个变形，需要设置一个全局的diff，来存储最接近target的差值。
 
-  + **C++ code**       
+  + **C++** **Code**              
 
-```cpp
-class Solution {
-public:
-    /*
-     * @param nums: A list of integers
-     * @return: An integer denotes the sum of max two non-overlapping subarrays
-     */
-    int maxTwoSubArrays(vector<int> &nums) {
-        // write your code here
-        if (nums.empty()) return 0;
-        int maxSum = INT_MIN, minSum = 0, curSum = 0;
-        vector<int> left(nums.size(), INT_MIN);    //注意vector一定要初始化
-        vector<int> right(nums.size(), INT_MIN);
-        //从左->右 遍历，将每一个maxSum放到left数组中
-        for (int i = 0; i < nums.size(); i++) {    
-            curSum += nums[i];
-            maxSum = max(maxSum, curSum - minSum);
-            minSum = min(minSum, curSum);
-            left[i] = maxSum;
-        }
-        maxSum = INT_MIN;
-        minSum = 0;
-        curSum = 0;
-        //从右->左 遍历，将每一个maxSum放到left数组中
-        for (int i = nums.size() - 1; i >= 0; i--) { 
-            curSum += nums[i];
-            maxSum = max(maxSum, curSum - minSum);
-            minSum = min(minSum, curSum);
-            right[i] = maxSum;
-        }
-        maxSum = INT_MIN;
-        //遍历所有的分界线，分界线有nums.size() - 1 个，将每个分界线的left和right的maxSum加起来。
-        for (int i = 0; i < nums.size() - 1; i++) {      
-            int cur = left[i] + right[i + 1]; //这里left[i] 和 right[i + 1] 对应，组成了原始的完整数组。
-            maxSum = max(maxSum, cur);
-        }
-        return maxSum;
-    }
-};
+```cpp  
 
-``` 
-
----
-
-### 5. [Lintcode Link：Maximum subarray difference](http://www.lintcode.com/en/problem/maximum-subarray-difference/)    
-
-  + **Description**     
-    Given an array with integers.       
-    Find two non-overlapping subarrays A and B, which `|SUM(A) - SUM(B)|` is the largest.   
-    The subarray should contain at least one number.       
-    Return the largest difference.   
-
-  + **Example**
-    For [1, 2, -3, 1], return 6. `|[1, 2] - [-3]| = 6`.
-
-  + **Solution**
-    - 同上一题，还是两个不重叠的子数组，依旧用分界线的思路去解决
-    - 特殊的是，现在求`|SUM(A) - SUM(B)|`，那么应该在left和right中，既要记录max 又要记录min。
-
-  + **C++** **code**
-
-```cpp 
-
-class Solution {
-public:
-    /*
-     * @param nums: A list of integers
-     * @return: An integer indicate the value of maximum difference between two substrings
-     */
-    int maxDiffSubArrays(vector<int> nums) {
-        // write your code here
-        if (nums.empty() || nums.size() == 1) return 0;
-        vector<int> left_max(nums.size(), INT_MIN);
-        vector<int> right_max(nums.size(), INT_MIN);
-        vector<int> left_min(nums.size(), INT_MAX);
-        vector<int> right_min(nums.size(), INT_MAX);
-        
-        //left_max
-        int maxSum = INT_MIN, minSum = 0, curSum = 0;
-        for (int i = 0; i < nums.size(); i++) {
-            curSum += nums[i];
-            maxSum = max(maxSum, curSum - minSum);
-            minSum = min(minSum, curSum);
-            left_max[i] = maxSum;
-        }
-        
-        //right_max
-        maxSum = INT_MIN, minSum = 0, curSum = 0;
-        for (int i = nums.size() - 1; i >= 0; i--) {
-            curSum += nums[i];
-            maxSum = max(maxSum, curSum - minSum);
-            minSum = min(minSum, curSum);
-            right_max[i] = maxSum;
-        }
-        
-        //left_min
-        maxSum = 0, minSum = INT_MAX, curSum = 0;
-        for (int i = 0; i < nums.size(); i++) {
-            curSum += nums[i];
-            minSum = min(minSum, curSum - maxSum);
-            maxSum = max(maxSum, curSum);
-            left_min[i] = minSum;
-        }
-        
-        //right_min
-        maxSum = 0, minSum = INT_MAX, curSum = 0;
-        for (int i = nums.size() - 1; i >= 0; i--) {
-            curSum += nums[i];
-            minSum = min(minSum, curSum - maxSum);
-            maxSum = max(maxSum, curSum);
-            right_min[i] = minSum;
-        }
-        
-        //abs(sum - sum)
-        int res = 0;
-        for (int i = 0; i < nums.size() - 1; i++) {
-            int max_min = abs(left_max[i] - right_min[i + 1]);
-            int min_max = abs(left_min[i] - right_max[i + 1]);
-            int tmp = max(max_min, min_max);
-            res = max(res, tmp);
-        }
-        return res;
-    }
-};
-
-```
-
----
-
-### 6. [Lintcode Link: Subarray sum](http://www.lintcode.com/en/problem/subarray-sum/#)    
-
-  + **Description**      
-  Given an integer array, find a subarray where the sum of numbers is zero.       
-  Your code should return the index of the first number and the index of the last number.    
-
-  + **Example**
-  Given `[-3, 1, 2, -3, 4]`, return `[0, 2]` or `[1, 3]`.    
-
-  + **Solution**    
-    - 理解题意：题中给出了一个特定的key_sum = 0，让找到加和与key_sum相等的子数组，并返回这个数组的前后下标。 
-    - 思路：建立一个hashmap，用来保存prefix_sum对应的最后一个元素的下标`index`。hashmap的初始值为(key_sum, -1)；    
-    		**当hashmap中出现了和key_sum相同的sum值，则表明从`index + 1`开始直到当前的元素加和是0。**    
-    		![key_sum]({{ '/styles/images/algorithms/2017-09-14-Subarray/key_sum.png' | prepend: site.baseurl }}) 
-
-  + **C++** **code**
-
-```cpp
 class Solution {
 public:
     /**
-     * @param nums: A list of integers
-     * @return: A list of integers includes the index of the first number 
-     *          and the index of the last number
+     * @param nums an integer array
+     * @param target an integer
+     * @return the difference between the sum and the target
      */
-    vector<int> subarraySum(vector<int> nums){
-        // write your code here
-        map<int, int> hashmap;
-        hashmap.insert(make_pair(0, -1));
-        vector<int> result;
-        int sum = 0;
-        for (int i = 0; i < nums.size(); i++) {
-            sum += nums[i];
-            vector<int> res;
-            if (hashmap.find(sum) != hashmap.end()) {
-                res.push_back(hashmap[sum] + 1);
-                res.push_back(i);
-                return res;
+    int twoSumClosest(vector<int>& nums, int target) {
+        // Write your code here
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        int j = n - 1;
+        int diff = INT_MAX;
+        for (int i = 0; i < n; ++i) {
+            while (i < j && nums[i] + nums[j] > target) {
+                if (nums[i] + nums[j] - target < diff)
+                    diff = nums[i] + nums[j] - target;
+                j --;
             }
-            hashmap[sum] = i;
+            
+            if (i >= j) break;
+
+            if (target - nums[i] - nums[j] < diff)
+                diff = target - nums[i] - nums[j];
         }
-        return result;
+        return diff;
     }
 };
+
 
 ```
 
 ---
+
+### 3. [Leetcode Link：Three Sum](https://leetcode.com/problems/3sum/description/)       
+
+  + **Description**   
+    Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.  
+    Note: The solution set must not contain duplicate triplets.  
+
+  + **Example**  
+    given array S = [-1, 0, 1, 2, -1, -4],     
+    A solution set is: { [-1, 0, 1], [-1, -1, 2] }   
+
+  + **Solution**   
+    - 大体思路：先把3_Sum的问题，简化为2_Sum，然后再按 Sort + Two Pointers方法，去解决2_Sum。  
+    - 具体操作：将原数组sort排序，从左到右for一遍所有元素，依次元素cur，把cur后面的元素当做一个数组，寻找出2_Sum = target - cur的。  
+    - 时间复杂度：for一遍数组需要O(n)时间，每次for取到一个cur后又在遍历cur之后的元素，这是O(n-1~n) 简化为O(n)，所以整体是O(N^2)的时间复杂度。  
+    - 在这里可以对比一下，hashmap和Sort+Two Pointer 的区别：
+      - 假设用hashmap解决这个问题，需要建立两个hashmap去存储cur的`值`与`index`和`target - cur`后的2_Sum中某个元素的`值`与`index`，时间复杂度为O(n^2)，但空间复杂度却是需要多耗费O(n)的空间。
+      - 相比之下，Sort + Two Pointers方法优于hashmap，因为其时间复杂度也是O(n^2)，但是没有耗费额外的空间。
+     
+  + **C++** **Code**              
+
+```cpp  
+
+
+    
+```
 
 <!-- TOC -->
 
 ## 总结：   
-遇到Subarray相关的问题，一定要想到`prefix sum`（前缀和数组）。  
+Two pointer在解决Two_Sum和3_Sum、4_Sim问题(返回的是元素本身)时，虽然时间复杂度不低，但这是目前找到的最优解了，后面有更好的解法再更新。
 
 ---
 
-`2017.09.14`       
+`2017.09.18`       
