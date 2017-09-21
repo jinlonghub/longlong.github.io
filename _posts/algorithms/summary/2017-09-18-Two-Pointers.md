@@ -133,8 +133,10 @@ public:
     A solution set is: { [-1, 0, 1], [-1, -1, 2] }   
 
   + **Solution**   
-    - 大体思路：先把3_Sum的问题，简化为2_Sum，然后再按 Sort + Two Pointers方法，去解决2_Sum。  
-    - 具体操作：将原数组sort排序，从左到右for一遍所有元素，依次元素cur，把cur后面的元素当做一个数组，寻找出2_Sum = target - cur的。  
+    - 大体思路：先把3_Sum的问题，简化为2_Sum，然后再按 Sort + Two Pointers方法，去解决2_Sum。需要注意，在求3_Sum的过程中要去重。 
+    - 具体操作：将原数组sort排序，从左到右for一遍所有元素，依次元素cur，把cur后面的元素当做一个数组，寻找出2_Sum = target - cur的。
+    - 代码执行中去重的操作：比如  
+      >array S = [-1, 0, 1, 2, -1, -4]，其中有两个`-1`，每次取一个值后都和它之前的取值做比较，相同的就跳过。
     - 时间复杂度：for一遍数组需要O(n)时间，每次for取到一个cur后又在遍历cur之后的元素，这是O(n-1~n) 简化为O(n)，所以整体是O(N^2)的时间复杂度。  
     - 在这里可以对比一下，hashmap和Sort+Two Pointer 的区别：
       - 假设用hashmap解决这个问题，需要建立两个hashmap去存储cur的`值`与`index`和`target - cur`后的2_Sum中某个元素的`值`与`index`，时间复杂度为O(n^2)，但空间复杂度却是需要多耗费O(n)的空间。
@@ -143,7 +145,34 @@ public:
   + **C++** **Code**              
 
 ```cpp  
-
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> res;
+        if (nums.size() == 0) return res;
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size() - 2; i++) {
+            if (nums[i] > 0) break;  //sort之后从小到大排列，当前取的三个值中最小的都`>0`则直接break。
+            //如果不break，会出现超时的错误。
+            if (i > 0 && nums[i - 1] == nums[i]) continue;  //去重
+            int left = i + 1, right = nums.size() - 1;
+            while(left < right) {
+                if (nums[left] + nums[right] < (0 - nums[i])) {
+                    left++;
+                } else if (nums[left] + nums[right] > (0 - nums[i])) {
+                    right--;
+                } else {
+                    res.push_back({nums[i], nums[left], nums[right]});
+                    while(left < right && nums[left + 1] == nums[left]) left++;  //去重
+                    while(left < right && nums[right - 1] == nums[right]) right--;  //去重
+                    left++;
+                    right--;
+                }
+            }
+        }
+        return res;
+    }
+};
 
     
 ```
