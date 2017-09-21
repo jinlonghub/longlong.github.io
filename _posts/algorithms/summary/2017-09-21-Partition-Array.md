@@ -17,7 +17,8 @@ tag: Array
 ---
 
 ## Partition Array解题思路              
-  -   
+  - 也是使用Two Pointers的基本方法，加上了二分的思想：用两个指针去同时遍历数组时，将比较的结果去做二分处理。
+  - Partition有二分和三分的题型，二分："Partition Array"；三分："Sort Colors"
 
 ---
 
@@ -83,8 +84,9 @@ public:
   + **Example**    
     Given [1, 0, 1, 2], sort it in-place to [0, 1, 1, 2].   
 
-  + **Solution**   
-    
+  + **Solution** 
+    - 使用三分的思想，将`[0, 1, 2]` 分到三个部分。  
+
 
 
 

@@ -180,7 +180,8 @@ public:
 <!-- TOC -->
 
 ## 总结：   
-Two pointer在解决Two_Sum和3_Sum、4_Sim问题(返回的是元素本身)时，虽然时间复杂度不低，但这是目前找到的最优解了，后面有更好的解法再更新。
+Two pointer和hashmap的方法对比：  
++ Two pointer可以节省额外的空间消耗，如果是hashmap 就需要建立一个额外的空间去存储数组和下标的pair。节省空间是Two pointer算法的优势。
 
 ---
 
