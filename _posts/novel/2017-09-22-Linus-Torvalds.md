@@ -13,13 +13,18 @@ tag: Novel
 ---
 ## Linus Torvalds履历  
 
-林纳斯·本纳第克特·托瓦兹（Linus Benedict Torvalds, 1969年~ ），著名的电脑程序员、黑客。Linux内核的发明人及该计划的合作者。托瓦兹利用个人时间及器材创造出了这套当今全球最流行的操作系统（作业系统）内核之一。现受聘于开放源代码开发实验室（OSDL：Open Source Development Labs, Inc），全力开发Linux内核。  
+林纳斯·本纳第克特·托瓦兹（Linus Benedict Torvalds, 1969年~ ），著名的电脑程序员、黑客。Linux内核的发明人及该计划的合作者。托瓦兹利用个人时间及器材创造出了这套当今全球最流行的操作系统（作业系统）内核之一。   
 
 托瓦兹1969年12月28日出生于芬兰赫尔辛基市。他毕业于赫尔辛基大学计算机系，1997年至2003年在美国加州硅谷任职于全美达公司（Transmeta Corporation），现受聘于开放源代码开发实验（OSDL：Open Source Development Labs, Inc），全力开发Linux内核。  
 
-Linus 作为程序员，无可争议地属于顶尖级别。他不仅是现如今广泛应用于各领域的 Linux 内核 The Linux Kernel Archives 的创始人（不必说当时他还是个大学生），也是多年来成功管理 Linux 内核开发 kernel/git/torvalds/linux.git 的核心人物。仅凭这两点，被网友称为“大神”一点不为过。  
+Linus 作为程序员，无可争议地属于顶尖级别。他不仅是现如今广泛应用于各领域的 Linux 内核 The Linux Kernel Archives 的创始人（不必说当时他还是个大学生），也是多年来成功管理 Linux 内核开发 kernel/git/torvalds/linux.git 的核心人物。仅凭这两点，被网友称为“大神”一点不为过。    
 
 他同时也是 Git http://git-scm.com/ 原始作者。Git 版本管理工具正在被越来越多的项目采用，逐渐统一了开发管理市场。    
+
+因为成功地开发了操作系统Linux内核而荣获2014年计算机先驱奖（For pioneering development of the Linux kernel using the open-source approach）。他的获奖创造了计算机先驱奖历史上的多个第一：第一次授予一位芬兰人；第一次授予一位“60后”（其实只差3天，就是“70后”）;获奖成果是在学生时期取得的。  
+
+“有些人生来就具有统率百万人的领袖风范；另一些人则是为写出颠覆世界的软件而生。唯一一个能同时做到这两者的人，就是托瓦兹。”美国《时代》周刊对“Linux之父”林纳斯·托瓦兹（Linus Torvalds）给出了极高的评价。  
+甚至，在《时代》周刊根据读者投票评选出的二十世纪100位最重要人物中，林纳斯居然排到了第15位，而从20世纪的最后几年就开始霸占全球首富称号的盖茨不过才是第17位。  
 
 ---
 
