@@ -8,11 +8,7 @@ tag: Array
 * content
 {:toc}
 
----
-
 <!-- more -->
-
-## Array专题--Two Pointers    
 
 ---
 
