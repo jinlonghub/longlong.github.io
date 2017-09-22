@@ -40,8 +40,8 @@ tag: Array
     If nums = [3,2,2,1] and k=2, a valid answer is 1.    
 
   + **Solution**      
-    - 使用Two Pointer方法，使用`left` `right`表示数组首、尾下标，寻找`nums[left] >= k`的值，和`nums[right] < k`的值；然后swap `nums[left]和nums[right]`  
-    - 注意最后`return`的是`right + 1`
+    - 使用Two Pointer方法，使用`left` `right`表示数组首、尾下标，寻找`nums[left] >= k`的值，和`nums[right] < k`的值；然后swap `nums[left]和nums[right]`    
+    - 注意最后`return`的是`right + 1`：见下面代码，在最终退出while循环时right指向的是最后一个`<k`的值，所以第一个`>=k`的值就需要`right + 1`。  
 
   + **C++** **Code**              
 
@@ -85,13 +85,50 @@ public:
     Given [1, 0, 1, 2], sort it in-place to [0, 1, 1, 2].   
 
   + **Solution**   
-    - 使用三分的思想，将整个数组的元素按`[0, 1, 2]`分到三个部分。   
+    - 使用三分的思想，建立三个指针，一个首指针一个尾指针，另一个遍历数组，遍历中0的元素放到首指针左边，2的元素放到尾指针右边，1的元素本地不动。这样就把数组分为了`[0,1,2]`的顺序。    
+    - 具体操作：建立三个指针`left`指向数组首， `right`指向数组尾， `i` 初始值为0 遍历数组；用`i`去遍历数组，`nums[i] == 0`时`nums[i]`和`nums[left]`交换，`nums[i] == 2`时`nums[i]`和`nums[right]`交换，`nums[i] == 1`时不做操作 继续遍历下一个元素。  
 
   + **C++** **Code**              
 
 ```cpp  
 
-
+class Solution {
+public:
+    /*
+     * @param nums: A list of integer which is 0, 1 or 2 
+     * @return: nothing
+     */
+    void sortColors(vector<int> &nums) {
+        // write your code here
+        int left = 0, right = nums.size() - 1;
+        int i = 0;
+        
+        while (i <= right) {  
+          //这个判断条件非常关键，是i和right做比较，不是left和right比较！！！
+          //因为left,i,right分别代表了0,1,2的区域，当i和right相遇即1和2的分界已经找到，可以退出循环了。
+          //如果i，right相遇后还继续走，就会把之前已经排好的顺序打乱。
+          //为什么必须用 <= ，因为right指向的点是没有做过判断的，只有i和right重叠，才能保证i对所有点做了比较。
+            if (nums[i] == 0) 
+                int tmp = nums[i];
+                nums[i] = nums[left];
+                nums[left] = tmp;
+                left++;
+                i++;  
+                //因为i是从左往右遍历，所以从left交换过来的只能是0或1，所以和left交换后i可以直接++。
+                //这里i++节省了循环的次数
+                //如果不i++,则会出现malloc错误：
+                //Main: malloc.c:3722: _int_malloc: Assertion `(unsigned long) (size) >= (unsigned long) (nb)' failed. Aborted (core dumped) 
+            } else if (nums[i] == 1) {
+                i++;
+            } else {
+                int tmp = nums[i];
+                nums[i] = nums[right];
+                nums[right] = tmp;
+                right--;
+            }
+        }
+    }
+};
 
 
 ```  
@@ -100,7 +137,8 @@ public:
 
 <!-- TOC -->
 
-## 总结：   
+## 总结：  
+  - Partition Array基本使用的是Two Pointers的思考方式，在设置while循环的退出条件时，需要慎重考虑，大多数情况下使用`<=`这种带着等号的判断基本不会出错，但具体情况需要具体分析。
 
 
 ---
