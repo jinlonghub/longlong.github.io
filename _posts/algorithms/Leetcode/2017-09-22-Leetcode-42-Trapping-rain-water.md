@@ -3,7 +3,7 @@ layout: post
 title: "Leetcode-42 Trapping rain water"
 date: 2017-09-22 21:00:00 +0800 
 categories: Algorithms
-tag: Two Pointers
+tag: Prefix Sum
 ---
 * content
 {:toc}
@@ -22,8 +22,7 @@ Find two lines, which together with x-axis forms a container, such that the cont
 
 Note: You may not slant the container and n is at least 2.   
 
-
- ### Example:     
+  ### Example:     
 Given [1,3,2], the max area of the container is 2.
 
 ---
@@ -32,9 +31,7 @@ Given [1,3,2], the max area of the container is 2.
 
 ## Solution:    
 - 思路：
-  - Two Pointers，指向数组的首/尾，两个指针做比较找到min，用`min * 两个指针的距离`表示volume，设置一个全局变量max，volume和max做比较保留最大值，最后return max。
-  - 两个指针的移动规则：移动min指针，因为当前volume是min决定的，所以只有移动这个决定因素，才能找到更大的volume，否则如果移动较大的指针，则其volume还是由min决定。
-  - Talk is cheap, so let me show the code.
+  - Prefix sum思路，求出每一个节点的
 
 ---  
 
