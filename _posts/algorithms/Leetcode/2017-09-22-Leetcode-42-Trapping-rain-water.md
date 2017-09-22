@@ -31,7 +31,8 @@ Given [1,3,2], the max area of the container is 2.
 
 ## Solution:    
 - 思路：
-  - Prefix sum思路，求出每一个节点的
+  - 要计算总的蓄水量，先求出到每个节点的`max_height`，用`max_height - cur_height`，得到这一个立柱上的蓄水量，然后所有立柱求sum。  
+  - 在计算`max_height`时，使用**Prefix_sum思路**，先从左往右求出`cur`左边的`left_max`，再从右往左求出`cur`右边的`right_max`，然后从`left_max`和`right_max`找到min，即`max_height`。  
 
 ---  
 
@@ -43,36 +44,30 @@ Given [1,3,2], the max area of the container is 2.
 
 class Solution {
 public:
-    /*
-     * @param heights: a vector of integers
-     * @return: an integer
-     */
-    int maxArea(vector<int> &heights) {
-        // write your code here
-        if (heights.empty()) return 0;
+    int trap(vector<int>& height) {
+        if (height.empty()) return 0;
         
-        int left = 0, right = heights.size() - 1;
-        int max_vol = 0;
+        vector<int> left_max(height.size(), 0);
+        vector<int> right_max(height.size(), 0);
+        int left = 0;
+        int right = 0;
+        int res = 0;
         
-        while (left <= right){
-            if (heights[left] < heights[right]) {
-                max_vol = max(max_vol, heights[left] * (right - left));
-                left++;
-            } else {  
-              /*这里可以把>=合起来考虑，也可以添加一个else if 把=单独拎出来让left++; right--;这都是可以的。
-              相比较，单独考虑=时循环次数会少一些。
-              
-              else if (heights[left] == heights[right]) {
-                  max_vol = max(max_vol, heights[left] * (right - left));
-                  left++;
-                  right--;
-              }
-              */
-                max_vol = max(max_vol, heights[right] * (right - left));
-                right--;
-            }
+        for (int i = 0; i < height.size(); i++) {
+            left = max(left, height[i]);
+            left_max[i] = left;
         }
-        return max_vol;
+        
+        for (int j = height.size() - 1; j >= 0; j--) {
+            right = max(right, height[j]);
+            right_max[j] = right;  
+            //注意：为了确保下标和left的一致性，这里不能写成right_max.push_back(right)。
+        }
+        
+        for (int n = 0; n < height.size(); n++) {
+            res += min(left_max[n], right_max[n]) - height[n];
+        }
+        return res;
     }
 };
 
@@ -83,9 +78,7 @@ public:
 <!-- TOC -->
 
 ## 总结：   
-  - Two Pointers的问题有两个注意点：
-    - 1. 在进行while循环时的判断条件，是用`<`还是`<=`这个需要根据不同情况慎重考虑。
-    - 2. 两个指针的移动规则，这个解题的关键，只有设置正确的移动规则，才能正确解决问题。这个暂时没有总结出规律，只能具体情况具体分析。
+  - 利用prefix sum的思路求解，将整体的问题，转化为零散结果的加和。
 
 ---
 
