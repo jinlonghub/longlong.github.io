@@ -28,25 +28,19 @@ Linus 作为程序员，无可争议地属于顶尖级别。他不仅是现如�
 
 ---
 
-## Linux和Git之父Linus Torvalds语录  
+## Linus Torvalds语录  
 
   - Bad programmers worry about the code. Good programmers worry about data structures and their relationships.  
-   低水平程序员总在考虑代码，高水平程序员总在考虑数据结构及其之间的关系。   
+    低水平程序员总在考虑代码，高水平程序员总在考虑数据结构及其之间的关系。   
 
   -	Talk is cheap. Show me the code.    
-  	空谈是不值钱的。给我看你的代码就好。     
-
-  - My name is Linus Torvalds and I am your god.    
-  	我的名字是Linus Torvalds，我是你们的上帝。（在1998 Linux大会上的自我介绍）   
-
-  - If you still don’t like it, that’s OK: that’s why I’m boss. I simply know better than you do.   	
-    如果你还是不喜欢Linux，没关系，这就是为什么我在当家的原因：因为我对技术的理解比你更深。  
+  	空谈是不值钱的。给我看你的代码就好。      
 
   - “Regression testing”? What’s that? If it compiles, it is good; if it boots up, it is perfect.   
   	“回归测试”？这是什么东西？如果代码能编译就是好的，如果它启动了，那就是完美的。  
 
   - Those that can, do. Those that can’t, complain.   
-    有能力的人一直在干活，没能力的人一直在抱怨。  
+    有能力的人一直在干活，没能力的人一直在抱怨。   
 
   - Nobody actually creates perfect code the first time around, except me. But there’s only one of me.    
     实际上没人能一次就写出完美的代码，除了我。但是世界上只有一个我。    
@@ -54,17 +48,23 @@ Linus 作为程序员，无可争议地属于顶尖级别。他不仅是现如�
   - Really, I’m not out to destroy Microsoft. That will just be a completely unintentional side effect.   
     真的，我没打算要摧毁微软。这种结果将会是完全无意中产生的副作用。   
 
+  - My name is Linus Torvalds and I am your god.    
+    我的名字是Linus Torvalds，我是你们的上帝。（在1998 Linux大会上的自我介绍）   
+
+  - If you still don’t like it, that’s OK: that’s why I’m boss. I simply know better than you do.         
+    如果你还是不喜欢Linux，没关系，这就是为什么我是老板：因为我对技术的理解比你更深。   
+
   - If you need more than 3 levels of indentation, you’re screwed anyway, and should fix your program.    
     如果你的代码里需要有超过三层的缩进，那么你已经搞砸了，应该修改你的代码。  
 
-  - Real quality means making sure that people are proud of the code they write, that they’re involved and taking it personally.    
-    真正的质量意味着让程序员为他们写的代码自豪，参与到编写代码之中并把它当做自己个人的事情。   
+  - Real quality means making sure that people are proud of the code they write, that they’re involved and taking it personally.     
+    真正的质量意味着让程序员为他们写的代码自豪，参与到编写代码之中并把它当做自己个人的事情。     
 
-  - Standards are paper. I use paper to wipe my butt every day. That’s how much that paper is worth.   
-    标准就是纸张。我每天都用纸张擦屁股。这就是这些纸张的价值所在。       
+  - Standards are paper. I use paper to wipe my butt every day. That’s how much that paper is worth.     
+    标准就是纸张。我每天都用纸张擦屁股。这就是这些纸张的价值所在。        
 
-  - Portability is for people who cannot write new programs.   
-    “可移植性”的概念是为那些不会写新程序的人准备的。
+  - Portability is for people who cannot write new programs.     
+    “可移植性”的概念是为那些不会写新程序的人准备的。  
 
 
 ----------
