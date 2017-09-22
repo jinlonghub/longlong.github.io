@@ -31,7 +31,7 @@ Linus 作为程序员，无可争议地属于顶尖级别。他不仅是现如�
 ## Linux和Git之父Linus Torvalds语录  
 
   - Bad programmers worry about the code. Good programmers worry about data structures and their relationships.  
-   （低水平程序员总在考虑代码，高水平程序员总在考虑数据结构及其之间的关系）  
+   低水平程序员总在考虑代码，高水平程序员总在考虑数据结构及其之间的关系。   
 
   -	Talk is cheap. Show me the code.    
   	空谈是不值钱的。给我看你的代码就好。     
