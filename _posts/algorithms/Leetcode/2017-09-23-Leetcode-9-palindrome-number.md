@@ -3,7 +3,7 @@ layout: post
 title: "Leetcode-9 palindrome number"
 date: 2017-09-23 21:00:00 +0800 
 categories: Algorithms
-tag: 
+tag: Palindrome
 ---
 * content
 {:toc}
